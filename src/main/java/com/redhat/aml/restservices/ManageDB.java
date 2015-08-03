@@ -18,18 +18,23 @@ public class ManageDB {
 	
 	
 //  create and persist an Account
+    
+    int acctNo = 1111;
 	
     em.getTransaction().begin();
     
-    Accountdetails acc = service.createAccount(1111,  "Anurag",  "Saran",
+    // clean up previously inserted account
+    service.removeAccount(acctNo);
+    
+    Accountdetails acc = service.createAccount(acctNo,  "Anurag",  "Saran",
 			 "1",  "a",  "a",  60090,
 			 "sa",  22,  "m",  "m",
 			 "Savings");
     em.getTransaction().commit();
-    System.out.println("Persisted " + em);
+    System.out.println("Persisted " + acc);
 
     // find a specific Account
-    acc = service.findAccount(11111);
-    System.out.println("Found " + em);
+    acc = service.findAccount(acctNo);
+    System.out.println("Found " + acc);
 	}
 }

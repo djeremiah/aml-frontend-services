@@ -23,6 +23,9 @@ public class AccountService {
     			 street,  city,  state,  zipcode,
     			 occupation,  age,  sex,  marritialstatus,
     			 accounttype);
+    	
+    	// persist the new object
+    	em.persist(acc);
     	return acc;
     	
     	
@@ -42,7 +45,7 @@ public class AccountService {
 
     public List<Accountdetails> findAllAccounts() {
         TypedQuery<Accountdetails> query = em.createQuery(
-                  "SELECT e FROM Accountdetails e", Accountdetails.class);
+                  "FROM Accountdetails", Accountdetails.class);
         return query.getResultList();
     }
 }
